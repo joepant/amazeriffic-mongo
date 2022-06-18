@@ -9,7 +9,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     console.log('Connected to Database')
     const db = client.db('todos')
     const todosCollection = db.collection('todos')
-    app.set('view engine', 'ejs')
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'ejs');
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use("/styles",express.static(__dirname + "/styles"));
 
