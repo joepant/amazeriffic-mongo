@@ -10,7 +10,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     const db = client.db('todos')
     const todosCollection = db.collection('todos')
     app.set('views', __dirname + '/views');
-    app.set('view engine', 'ejs');
+    app.set('view engine', 'html');
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use("/styles",express.static(__dirname + "/styles"));
 
@@ -22,7 +22,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         db.collection('todos').find().toArray()
           .then(results => {
             console.log(results)
-            res.render('index.ejs', { todos: results })
+            res.render('index.html', { todos: results })
           })
           .catch(error => console.error(error))
       })
